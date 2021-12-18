@@ -22,7 +22,7 @@ class ChatModel extends Model {
     currentUser = users[0];
     friendList = users.where((user) => user.chatID != currentUser.chatID).toList();
     socketIO = SocketIOManager()
-        .createSocketIO('https://backend-flutter-chat.herokuapp.com', '/', query: 'chatID=${currentUser.chatID}');
+        .createSocketIO('http://10.0.2.2:8000', '/', query: 'chatID=${currentUser.chatID}');
     socketIO.init();
     socketIO.subscribe('receive_message', (jsonData) {
       Map<String, dynamic> data = json.decode(jsonData);
