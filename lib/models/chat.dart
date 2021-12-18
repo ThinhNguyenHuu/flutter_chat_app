@@ -21,8 +21,7 @@ class ChatModel extends Model {
   void init() {
     currentUser = users[0];
     friendList = users.where((user) => user.chatID != currentUser.chatID).toList();
-    socketIO =
-        SocketIOManager().createSocketIO('<ENTER_YOUR_SERVER_URL_HERE>', '/', query: 'chatID=${currentUser.chatID}');
+    socketIO = SocketIOManager().createSocketIO('http://localhost:8000', '/', query: 'chatID=${currentUser.chatID}');
     socketIO.init();
     socketIO.subscribe('receive_message', (jsonData) {
       Map<String, dynamic> data = json.decode(jsonData);
