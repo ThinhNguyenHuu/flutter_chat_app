@@ -25,4 +25,4 @@ io.on('connection', socket => {
         })
     })
 });
-http.listen(8000);
+http.listen(80);
